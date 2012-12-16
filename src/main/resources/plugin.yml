@@ -1,0 +1,4 @@
+name: URIEnforcer
+version: maven-version-number
+author: cedeel
+main: be.darnell.urienforcer.URIEnforcer
