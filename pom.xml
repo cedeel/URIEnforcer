@@ -5,7 +5,7 @@
     <groupId>be.darnell</groupId>
     <artifactId>URIEnforcer</artifactId>
     <packaging>jar</packaging>
-    <version>1.0.0</version>
+    <version>1.1</version>
     <name>URIEnforcer</name>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -70,7 +70,7 @@
                     <replacements>
                         <replacement>
                             <token>maven-version-number</token>
-                            <value>${project.version}-b${project.build.number}</value>
+                            <value>${project.version}</value>
                         </replacement>
                     </replacements>
                 </configuration>
