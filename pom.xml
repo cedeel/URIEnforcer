@@ -89,7 +89,7 @@
 		    <relocations>
 		        <relocation>
 			    <pattern>org.mcstats</pattern>
-			    <shadedPattern>be.darnell.xspy.util.mcstats</shadedPattern>
+			    <shadedPattern>be.darnell.urienforcer.util.mcstats</shadedPattern>
 			</relocation>
 		    </relocations>
                 </configuration>
