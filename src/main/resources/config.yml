@@ -1,2 +1,3 @@
 ip: localhost
+message: '&7Please log in using &f%i'
 mcstats: true
