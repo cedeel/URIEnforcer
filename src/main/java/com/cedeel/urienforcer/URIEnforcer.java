@@ -44,6 +44,7 @@ public class URIEnforcer extends JavaPlugin implements Listener {
     private static final int DEFAULT_PORT = 25565;
     private List<String> addresses;
     private List<String> names;
+    private String message;
 
     @Override
     public void onEnable() {
@@ -59,6 +60,8 @@ public class URIEnforcer extends JavaPlugin implements Listener {
         for (String name : addresses) {
             names.add((name + ":" + getServer().getPort()).toLowerCase());
         }
+
+        message = ChatColor.translateAlternateColorCodes('&' ,config.getString("&7Please log in using &f%i"));
         if (config.getBoolean("mcstats", true))
             setupMetrics();
     }
@@ -68,9 +71,9 @@ public class URIEnforcer extends JavaPlugin implements Listener {
 
         if (!names.contains(e.getHostname().toLowerCase())) {
             if (getServer().getPort() != DEFAULT_PORT)
-                e.disallow(Result.KICK_OTHER, ChatColor.GRAY +"Please log in using " + ChatColor.WHITE + names.get(0));
+                e.disallow(Result.KICK_OTHER, message.replaceAll("%i", names.get(0)));
             else
-                e.disallow(Result.KICK_OTHER, ChatColor.GRAY + "Please log in using " + ChatColor.WHITE + addresses.get(0));
+                e.disallow(Result.KICK_OTHER, message.replaceFirst("%i", addresses.get(0)));
             getLogger().info(e.getPlayer().getName() + " tried to log in using " + e.getHostname());
         }
     }

@@ -1,4 +1,4 @@
-name: URIEnforcer
-version: maven-version-number
+name: ${name}
+version: ${version}
 author: cedeel
 main: com.cedeel.urienforcer.URIEnforcer
