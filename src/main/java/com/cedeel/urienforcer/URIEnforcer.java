@@ -26,7 +26,6 @@
  */
 package com.cedeel.urienforcer;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -34,10 +33,8 @@ import org.bukkit.event.player.PlayerLoginEvent.Result;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import java.util.List;
-import org.bukkit.ChatColor;
 import org.bukkit.event.player.PlayerLoginEvent;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.mcstats.MetricsLite;
 
 public class URIEnforcer extends JavaPlugin implements Listener {
 
@@ -60,10 +57,6 @@ public class URIEnforcer extends JavaPlugin implements Listener {
         for (String name : addresses) {
             names.add((name + ":" + getServer().getPort()).toLowerCase());
         }
-
-        message = ChatColor.translateAlternateColorCodes('&' ,config.getString("&7Please log in using &f%i"));
-        if (config.getBoolean("mcstats", true))
-            setupMetrics();
     }
 
     @EventHandler
@@ -75,15 +68,6 @@ public class URIEnforcer extends JavaPlugin implements Listener {
             else
                 e.disallow(Result.KICK_OTHER, message.replaceFirst("%i", addresses.get(0)));
             getLogger().info(e.getPlayer().getName() + " tried to log in using " + e.getHostname());
-        }
-    }
-
-    private void setupMetrics() {
-        try {
-            MetricsLite metrics = new MetricsLite(this);
-            metrics.start();
-        } catch (IOException e) {
-            System.out.println("Failed to submit stats.");
         }
     }
 }
